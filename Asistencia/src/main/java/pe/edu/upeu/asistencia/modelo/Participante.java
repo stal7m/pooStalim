@@ -21,10 +21,4 @@ public class Participante {
     private TIPO_PARTICIPANTE tipoParticipante;
 
 
-
-
-
-
-
-
 }
