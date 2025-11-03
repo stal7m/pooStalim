@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ControlDeAcceso.CRUD.controller.UsuariosController">
+
+    <top>
+        <Label text="Gestión de Usuarios"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10;" />
+    </top>
+
+    <center>
+        <TableView fx:id="tablaUsuarios" prefHeight="300" prefWidth="600">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                <TableColumn fx:id="colDni" text="DNI" prefWidth="100" />
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150" />
+                <TableColumn fx:id="colProfesion" text="Profesión" prefWidth="150" />
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="100" />
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="10" padding="10">
+            <HBox spacing="10">
+                <TextField fx:id="dniField" promptText="DNI" />
+                <TextField fx:id="nombreField" promptText="Nombre" />
+                <PasswordField fx:id="passwordField" promptText="Contraseña" />
+            </HBox>
+
+            <HBox spacing="10">
+                <TextField fx:id="profesionField" promptText="Profesión" />
+                <TextField fx:id="tipoField" promptText="Tipo (Ej: Admin)" />
+                <Button text="Agregar" onAction="#agregarUsuario" />
+                <Button text="Editar" onAction="#editarUsuario" />
+                <Button text="Eliminar" onAction="#eliminarUsuario" />
+            </HBox>
+
+            <Label fx:id="mensajeLabel" style="-fx-text-fill: green;" />
+        </VBox>
+    </bottom>
+</BorderPane>
