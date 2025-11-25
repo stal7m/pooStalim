@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ControlDeAcceso.CRUD.controller.MainController"
+            stylesheets="@style.css">
+
+    <!-- 🔹 ENCABEZADO -->
+    <top>
+        <VBox spacing="5" style="-fx-background-color: #2e86de;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="📋 REGISTRO DE ASISTENCIAS"
+                       style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblUsuarioConectado"
+                       text="👤 Conectado como: Administrador"
+                       style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-style: italic;"/>
+                <Button fx:id="btnCerrarSesion"
+                        text="Cerrar sesión"
+                        onAction="#handleCerrarSesion"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- 🔹 TABLA PRINCIPAL -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <!-- 🔍 Buscador -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Buscar:" style="-fx-font-size: 14px;"/>
+                <TextField fx:id="txtBuscar" promptText="Ingrese nombre o DNI..." prefWidth="250"/>
+                <Button text="🔎 Filtrar" onAction="#handleBuscar"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                <Button text="🔄 Mostrar todo" onAction="#handleMostrarTodo"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+            </HBox>
+
+            <TableView fx:id="tablaAsistencias" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
+                    <TableColumn fx:id="colDni" text="DNI" prefWidth="100"/>
+                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+                    <TableColumn fx:id="colHoraIngreso" text="Hora Ingreso" prefWidth="100"/>
+                    <TableColumn fx:id="colHoraSalida" text="Hora Salida" prefWidth="100"/>
+                    <TableColumn fx:id="colProfesion" text="Profesión" prefWidth="120"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <!-- 🔘 Botones de acción -->
+            <HBox spacing="10" alignment="center">
+                <Button fx:id="btnNuevo"
+                        text="Nuevo"
+                        onAction="#handleNuevo"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+
+                <Button fx:id="btnRegistrar"
+                        text="Registrar asistencia"
+                        onAction="#handleRegistrar"
+                        style="-fx-background-color: #2980b9; -fx-text-fill: white;"/>
+
+                <Button fx:id="btnEscanearQR"
+                        text="Escanear QR"
+                        onAction="#onEscanearQR"
+                        style="-fx-background-color: #16a085; -fx-text-fill: white;"/>
+
+                <!-- 🆕 Importar desde Excel -->
+                <Button fx:id="btnImportarExcel"
+                        text="Importar Excel"
+                        onAction="#handleImportarExcel"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white;"/>
+
+                <Button fx:id="btnEliminar"
+                        text="Eliminar"
+                        onAction="#handleEliminar"
+                        style="-fx-background-color: #c0392b; -fx-text-fill: white;"/>
+
+                <Button fx:id="btnEditar"
+                        text="Editar"
+                        onAction="#handleEditar"
+                        style="-fx-background-color: #f39c12; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
