@@ -1,39 +1,40 @@
-package pe.edu.upeu.asistencia.servicio;
+package pe.edu.upeu.asistencia.repositorio;
 
-import org.springframework.stereotype.Service;
+
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+import pe.edu.upeu.asistencia.enuns.CARRERA;
+import pe.edu.upeu.asistencia.enuns.TIPO_PARTICIPANTE;
 import pe.edu.upeu.asistencia.modelo.Participante;
-import pe.edu.upeu.asistencia.repositorio.ParticipanteRepositorio;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class ParticipanteServicioImp extends ParticipanteRepositorio implements ParticipanteServicioI {
+public abstract class ParticipanteRepositorio {
+    public List<Participante> listaParticipantes =new ArrayList<>();
 
-    @Override
-    public void save(Participante participante) {
-        listaParticipantes.add(participante);
-    }
+    public List<Participante> findAll(){
+        listaParticipantes.add(
+                new Participante(
+                        new SimpleStringProperty("74463509"),
+                        new SimpleStringProperty("Stalim"),
+                        new SimpleStringProperty("Cayte"),
+                        new SimpleBooleanProperty(true), CARRERA.Sistemas ,
+                        TIPO_PARTICIPANTE.Asistente
 
-    @Override
-    public List<Participante> findAll() {
-        if(listaParticipantes.isEmpty()){
-            return super.findAll();
-        }
+                )
+
+        );
+        listaParticipantes.add(
+                new Participante(
+                        new SimpleStringProperty("74463509"),
+                        new SimpleStringProperty("Stalim"),
+                        new SimpleStringProperty("Cutisaca"),
+                        new SimpleBooleanProperty(true), CARRERA.Sistemas,
+                        TIPO_PARTICIPANTE.Asistente
+                )
+        );
         return listaParticipantes;
-    }
-
-    @Override
-    public void update(Participante participante, int index) {
-        listaParticipantes.set(index, participante);
-    }
-
-    @Override
-    public void delete(int index) {
-        listaParticipantes.remove(index);
-    }
-
-    @Override
-    public Participante findById(int index) {
-        return listaParticipantes.get(index);
     }
 }
